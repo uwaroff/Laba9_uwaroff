@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Онлайн магазин</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+  body {
+   font-family: Arial, Helvetica, sans-serif;
+   margin: 0;
+   padding: 0;
+  }
+  div {
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+  }
+
+  header {
+   background-color: #333;
+   color: #fff;
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+  }
+
+  header a {
+   color: #fff;
+   text-decoration: none;
+   font-size: 18px;
+   padding: 10px;
+  }
+
+  section {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+
+   padding: 20px;
+  }
+
+  .product {
+   width: 300px;
+   margin: 10px;
+   padding: 10px;
+   border: 1px solid #ccc;
+   text-align: center;
+  }
+
+  .product img {
+   width: 200px;
+   height: 200px;
+   object-fit: contain;
+  }
+
+  .product h2 {
+   font-size: 18px;
+   margin: 10px 0;
+  }
+
+  .product p {
+   font-size: 16px;
+   margin: 10px 0;
+  }
+
+  .product button {
+   background-color: #333;
+   color: #fff;
+   padding: 10px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+  }
+
+  footer {
+   background-color: #333;
+   color: #fff;
+   padding: 10px;
+   text-align: center;
+  }
+  table {
+   border: 1px solid grey;
+   align: center;
+
+}
+
+
+ </style>
+</head>
+<body>
+ <header>
+  <a href="#">Комплектующие для ПК</a>
+
+ </header>
+<section>
+
+    <form action="{{ url_for('index')}}" method="post" >
+       <p>
+          <p>
+          Введите стоимость или название комплектующего
+          </p>
+          <p>
+             <input type="text" name="search" value="" required>
+          </p>
+          <p>
+              <input type="submit" value="Search" name="searchBtn"></input>
+
+          </p>
+       </p>
+
+    </form>
+    <form action="{{ url_for('index')}}" method="post" >
+       <button value="Clear" name="clear">Очистить</button>
+       <button  value="All List" name="all" >Весь список</button>
+    </form>
+
+</section>
+ <div>
+  <table>
+    <tr><th>Комплектующие</th><th>Цена</th></tr>
+
+    {%for i in range(len)%}
+
+   <tr><td>{{allGames[i][1]}} </td><td>{{allGames[i][2]}} Руб.</td></tr>
+     {%endfor%}
+    <tr><td>Итого: </td><td>{{sum}} Руб.</td></tr>
+  </table>
+
+ </div>
+
+
+
+ <footer>
+  <p>© 2023 </p>
+ </footer>
+</body>
+</html>
